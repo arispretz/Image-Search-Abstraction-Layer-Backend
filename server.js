@@ -12,9 +12,22 @@ const PORT = process.env.PORT || 5000;
 const MONGO_URI = process.env.MONGO_URI;
 const UNSPLASH_ACCESS_KEY = process.env.UNSPLASH_ACCESS_KEY;
 
+const allowedOrigins = [
+  'https://image-search-abstraction-layer-frontend-729ie7m0l.vercel.app',
+];
+
 app.use(cors({
-  origin: 'https://https://image-search-abstra-git-47aa11-ariana-carolina-spretzs-projects.vercel.app'
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps, curl requests)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) === -1) {
+      const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  }
 }));
+
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../frontend/build')));
 
