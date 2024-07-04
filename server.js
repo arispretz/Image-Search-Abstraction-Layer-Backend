@@ -12,21 +12,13 @@ const PORT = process.env.PORT || 5000;
 const MONGO_URI = process.env.MONGO_URI;
 const UNSPLASH_ACCESS_KEY = process.env.UNSPLASH_ACCESS_KEY;
 
-const allowedOrigins = [
-  'https://image-search-abstraction-layer-frontend-729ie7m0l.vercel.app',
-];
+const corsOptions = {
+  origin: 'https://image-search-abstraction-layer-frontend-1zgbk4y4x.vercel.app',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+};
 
-app.use(cors({
-  origin: function (origin, callback) {
-    // Allow requests with no origin (like mobile apps, curl requests)
-    if (!origin) return callback(null, true);
-    if (allowedOrigins.indexOf(origin) === -1) {
-      const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
-      return callback(new Error(msg), false);
-    }
-    return callback(null, true);
-  }
-}));
+app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../frontend/build')));
