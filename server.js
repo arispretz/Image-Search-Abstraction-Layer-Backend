@@ -13,7 +13,7 @@ const MONGO_URI = process.env.MONGO_URI;
 const UNSPLASH_ACCESS_KEY = process.env.UNSPLASH_ACCESS_KEY;
 
 const corsOptions = {
-  origin: 'https://image-search-abstraction-layer-frontend-c8t5dprsh.vercel.app',
+  origin: 'https://image-search-abstraction-layer-frontend-4zt9wemtw.vercel.app',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']
 };
