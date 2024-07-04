@@ -13,7 +13,7 @@ const MONGO_URI = process.env.MONGO_URI;
 const UNSPLASH_ACCESS_KEY = process.env.UNSPLASH_ACCESS_KEY;
 
 app.use(cors({
-  origin: 'https://https://image-search-abstra-git-47aa11-ariana-carolina-spretzs-projects.vercel.app' 
+  origin: 'https://https://image-search-abstra-git-47aa11-ariana-carolina-spretzs-projects.vercel.app'
 }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../frontend/build')));
